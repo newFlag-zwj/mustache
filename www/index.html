@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id="aa">
+
+    </div>
+    <script src="/xuni/bundle.js"></script>
+
+    <script>
+        // 定义模板
+        templateStr = `
+        <div>
+            <ul>
+                {{#students}}
+                <li>
+                    姓名: {{name}}
+                    <ol>
+                        爱好：
+                        {{#hobbies}}
+                        <li>{{.}}</li>
+                        {{/hobbies}}
+                    </ol>
+                </li>
+                {{/students}}
+            </ul>
+        </div>
+
+        `
+            //数据
+        var data = {
+            students: [{
+                'name': 'aa',
+                'hobbies': ['a11', '22', '33']
+            }, {
+                'name': 'bb',
+                'hobbies': ['b11', '22', '33']
+            }, {
+                'name': 'cc',
+                'hobbies': ['c11', '22', '33']
+            }, {
+                'name': 'dd',
+                'hobbies': ['d11', '22', '33']
+            }]
+        };
+
+
+
+        // 调用render
+        var doc = FC_templateEngine.render(templateStr, data)
+
+        var tt = document.getElementById('aa')
+        tt.innerHTML = doc
+    </script>
+</body>
+
+</html>
